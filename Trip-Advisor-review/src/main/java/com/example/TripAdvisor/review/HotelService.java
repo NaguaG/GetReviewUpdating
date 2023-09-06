@@ -26,28 +26,25 @@ public class HotelService {
 
         List<ReviewData> reviewDataList = new ArrayDeque<>();
 
-        //get locations
         Locations locations = getLocationIds(hotelName, city);
         List<Location> locationList = locations.getLocations();
         if (locationList != null && !locationList.isEmpty()) {
             for (Location location : locationList) {
                 String location_id = location.getLocation_id();
-//                System.out.println(location.getName());
 
                 ReviewData reviewData = new ReviewData();
                 reviewData.setHotelName(location.getName());
 
-                //for each location, get reviews now:
                 Reviews reviews = fetchHotelReviews(location_id);
                 List<Review> reviewList = reviews.getReviews();
                 for (Review review : reviewList) {
-//                    System.out.println(review.getText());
+                    reviewData.getTitles().add(review.getTitle());
                     reviewData.getReviewTexts().add(review.getText());
                 }
                 reviewDataList.add(reviewData);
             }
         } else {
-            System.out.println("No locations found."); //huhuurei
+            System.out.println("No locations found.");
         }
 
         return reviewDataList;
@@ -100,7 +97,6 @@ public class HotelService {
                 .get()
                 .addHeader("accept", "application/json")
                 .build();
-//        System.out.println(apiUrl);
 
         Response response = null;
         Reviews reviews = null;

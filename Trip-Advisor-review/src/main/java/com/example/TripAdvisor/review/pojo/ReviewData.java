@@ -11,6 +11,9 @@ import java.util.List;
 @Setter
 public class ReviewData {
     private String hotelName;
+    private List<String> titles = new ArrayList<>();
     private List<String> reviewTexts = new ArrayList<>();
+
+
 
 }

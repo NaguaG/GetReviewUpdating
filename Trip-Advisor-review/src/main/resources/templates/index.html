@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Review Display</title>
+</head>
+<body>
+<h1>Hotel Review Display</h1>
+
+<form id="hotelForm">
+    <div style="margin-bottom: 5px;">
+        <label for="hotelName" style="flex: 1;">Hotel Name:</label>
+        <input type="text" id="hotelName" name="hotelName" required style="flex: 2;">
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label for="city" style="margin-right: 50px;">City:</label>
+        <input type="text" id="city" name="city" required style="flex: 2;">
+    </div>
+    <button type="submit">Hotel Reviews</button>
+</form>
+
+<div id="locationResults">
+</div>
+
+
+<script>
+document.getElementById("hotelForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const hotelName = document.getElementById("hotelName").value;
+    const city = document.getElementById("city").value;
+
+    try {
+        const response = await fetch(`http://localhost:8080/api/get-hotel-reviews?hotelName=${hotelName}&city=${city}`);
+        const data = await response.json();
+
+        const locationResults = document.getElementById("locationResults");
+        locationResults.innerHTML = "";
+
+        if (Array.isArray(data)) {
+            data.forEach(hotel => {
+                const hotelInfo = document.createElement("div");
+                const hotelNameHeader = document.createElement("h2");
+                hotelNameHeader.textContent = hotel.hotelName;
+                hotelInfo.appendChild(hotelNameHeader);
+
+                for (let i = 0; i < hotel.titles.length; i++) {
+                    const reviewTitle = document.createElement("h4");
+                    reviewTitle.textContent = hotel.titles[i];
+                    hotelInfo.appendChild(reviewTitle);
+
+                    const reviewText = document.createElement("p");
+                    reviewText.textContent = hotel.reviewTexts[i];
+                    hotelInfo.appendChild(reviewText);
+                }
+
+                locationResults.appendChild(hotelInfo);
+            });
+        } else {
+            locationResults.innerHTML = "No hotels found.";
+        }
+    } catch (error) {
+        console.error("Error fetching hotel reviews:", error);
+    }
+});
+</script>
+
+</body>
+</html>

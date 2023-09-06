@@ -15,8 +15,6 @@ import java.util.List;
 public class Locations {
     private List<Location> data;
 
-    // Constructors, getters, and setters go here...
-
     public List<Location> getLocations() {
         return data;
     }
