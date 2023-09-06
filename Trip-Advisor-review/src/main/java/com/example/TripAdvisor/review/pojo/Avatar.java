@@ -1,5 +1,14 @@
 package com.example.TripAdvisor.review.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Avatar {
     private String thumbnail;
     private String small;
@@ -7,43 +16,4 @@ public class Avatar {
     private String large;
     private String original;
 
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public String getSmall() {
-        return small;
-    }
-
-    public String getMedium() {
-        return medium;
-    }
-
-    public String getLarge() {
-        return large;
-    }
-
-    public String getOriginal() {
-        return original;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    public void setSmall(String small) {
-        this.small = small;
-    }
-
-    public void setMedium(String medium) {
-        this.medium = medium;
-    }
-
-    public void setLarge(String large) {
-        this.large = large;
-    }
-
-    public void setOriginal(String original) {
-        this.original = original;
-    }
 }

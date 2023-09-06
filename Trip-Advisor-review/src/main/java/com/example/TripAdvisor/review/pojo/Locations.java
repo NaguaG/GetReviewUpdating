@@ -5,16 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reviews {
-    private List<Review> data;
+public class Locations {
+    private List<Location> data;
 
-    public List<Review> getReviews() {
+    // Constructors, getters, and setters go here...
+
+    public List<Location> getLocations() {
         return data;
     }
 }
