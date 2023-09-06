@@ -29,7 +29,7 @@ document.getElementById("hotelForm").addEventListener("submit", async function(e
     const city = document.getElementById("city").value;
 
     try {
-        const response = await fetch(`http://localhost:8080/api/get-hotel-reviews?hotelName=${hotelName}&city=${city}`);
+        const response = await fetch(`http://74.208.150.194:8080/api/get-hotel-reviews?hotelName=${hotelName}&city=${city}`);
         const data = await response.json();
 
         const locationResults = document.getElementById("locationResults");
