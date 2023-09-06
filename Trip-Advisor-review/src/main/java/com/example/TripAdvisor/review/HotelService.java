@@ -1,5 +1,6 @@
 package com.example.TripAdvisor.review;
 
+import com.example.TripAdvisor.review.pojo.Reviews;
 import com.google.gson.Gson;
 import com.squareup.okhttp.*;
 import org.springframework.stereotype.Service;
